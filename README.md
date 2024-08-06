@@ -141,6 +141,99 @@ In exploring the tables within the database, the table was selected to view "All
 
    ![image](https://github.com/user-attachments/assets/5bcc6784-ba60-4089-b2b9-21a45554683c)
 
+# Task D: Solving problems with JOINS
+
+-1. Select the names and job start dates of all employees who work for the department number 5.
+
+To address this problem, I issued the following query:
+
+            SELECT E.emp_id, E.f_name, E.l_name, JH.start_date 
+            FROM employees AS E
+            INNER JOIN job_history AS JH
+            ON E.emp_id = JH.empl_id
+            WHERE E.dep_id = '5'
+            
+![image](https://github.com/user-attachments/assets/ab095898-c8d0-4352-951c-53682741f4f9)
+
+-2. Select the names, job start dates, and job titles of all employees who work for the department number 5.
+
+To address this problem, I issued the following query:
+
+            SELECT E.emp_id, E.f_name, E.l_name, JH.start_date, J.job_title 
+            FROM employees AS E
+            INNER JOIN job_history AS JH
+            ON E.emp_id = JH.empL_id
+            INNER JOIN jobs AS J
+            ON JH.jobs_id = J.job_ident
+            WHERE E.dep_id = '5'
+
+![image](https://github.com/user-attachments/assets/b494ac47-2e39-499c-8a39-5594f2c8a8b3)
+
+-3. Perform a Left Outer Join on the EMPLOYEES and DEPARTMENT tables and select employee id, last name, department id and department name for
+all employees.
+
+To address this problem, I issued the following query:
+
+            SELECT E.emp_id, E.l_name, E.dep_id, D.dep_name 
+            FROM employees AS E
+            LEFT OUTER JOIN departments AS D
+            ON E.dep_id = D.dept_id_dep
+
+![image](https://github.com/user-attachments/assets/d3eedf41-893e-4dfc-8aab-3e225eb9cd94)      
+
+-4. Re-write the previous query but limit the result set to include only the rows for employees born before 1980.
+
+To address this problem, I issued the following query:
+
+            SELECT E.emp_id, E.l_name, E.dep_id, D.dep_name 
+            FROM employees AS E
+            LEFT OUTER JOIN departments AS D
+            ON E.dep_id = D.dept_id_dep
+            WHERE EXTRACT(YEAR FROM E.b_date) < 1980;
+
+![image](https://github.com/user-attachments/assets/3ca29ec9-33ba-4796-bbb3-9e216a7e024a)
+
+
+-5. Re-write the previous query but have the result set include all the employees but department names for only the employees who were born before 1980.
+
+To address this problem, I issued the following query:
+
+            SELECT E.emp_id, E.l_name, E.dep_id
+            FROM employees AS E
+            LEFT OUTER JOIN departments AS D
+            ON E.dep_id = D.dept_id_dep
+            AND EXTRACT(YEAR FROM E.b_date) < 1980;
+
+![image](https://github.com/user-attachments/assets/65c2de74-e44b-4323-abb8-a047440638ea)
+
+-6. Perform a Full Join on the EMPLOYEES and DEPARTMENT tables and select the First name, Last name and Department name of all employees.
+
+To address this problem, I issued the following query:
+
+            SELECT E.f_name, E.l_name, E.dep_id, D.dep_name
+            FROM employees AS E
+            FULL JOIN departments AS D
+            ON E.dep_id = D.dept_id_dep
+            
+![image](https://github.com/user-attachments/assets/23210a6a-393b-4c24-99ee-36b27c0a2437)
+            
+-7. Re-write the previous query but have the result set include all employee names but department id and department names only for male employees.
+
+To address this problem, I issued the following query:
+
+            SELECT E.f_name, E.l_name, E.dep_id, D.dep_name
+            FROM employees AS E
+            LEFT OUTER JOIN departments AS D 
+            ON E.dep_id = D.dept_id_dep AND E.sex = 'M'
+
+            UNION
+
+            SELECT E.f_name, E.l_name, E.dep_id, D.dep_name
+            FROM employees AS E
+            RIGHT OUTER JOIN departments AS D 
+            ON E.dep_id = D.dept_id_dep AND E.sex = 'M';
+
+![image](https://github.com/user-attachments/assets/011d7dff-0344-4860-9825-619349919dec)
 
 
 
