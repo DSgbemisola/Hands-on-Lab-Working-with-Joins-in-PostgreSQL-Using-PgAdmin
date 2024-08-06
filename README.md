@@ -48,7 +48,7 @@ The objective of this project is to run through some SQL practice problems that 
       ON table1.column_name = table2.column_name
       WHERE condition;
 
-  - How does a FULL OUTER JOIN statement syntax look?
+- How does a FULL OUTER JOIN statement syntax look?
 
       SELECT column_name(s)
       FROM table1
@@ -64,7 +64,7 @@ The objective of this project is to run through some SQL practice problems that 
       ON table1.column_name = table2.column_name
       WHERE condition
 
-  - Union operator
+- Union operator
 
 The UNION operator is used to combine the result-set of two or more SELECT statements.
 
